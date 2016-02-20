@@ -18,7 +18,7 @@ func TestRepro(t *testing.T) {
 	addr := server.Listener.Addr().String()
 	t.Logf("Listening on %v", addr)
 
-	for d := time.Second; d <= (1<<63 - 1); d *= 2 {
+	for d := time.Second; d > 0; d *= 2 {
 		t.Logf("Attempting timeout of %v", d)
 		c, err := net.DialTimeout("tcp", addr, d)
 		if err != nil {
