@@ -22,7 +22,7 @@ func TestRepro(t *testing.T) {
 		t.Logf("Attempting timeout of %v", d)
 		c, err := net.DialTimeout("tcp", addr, d)
 		if err != nil {
-			t.Fatalf("Connect failed with timeout of %v: %v", d, err)
+			t.Fatalf("Connect failed with timeout of %v (i64 value: %v): %v", d, int64(d), err)
 		}
 		c.Close()
 	}
